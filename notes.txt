@@ -15,3 +15,10 @@
 
 <h3>Weblinks</h3>
 Instagram: https://www.instagram.com/exp.wavs/
+
+Web Performance links:
+Expires headers for caching photos: https://gtmetrix.com/add-expires-headers.html
+Expires headers word of caution: https://moz.com/blog/expires-headers-for-seo-why-you-should-think-twice-before-using-them
+Website speed test: https://tools.pingdom.com/#5c068f52b2c00000
+
+Google Form Custom Design https://blog.webjeda.com/google-form-customize/
