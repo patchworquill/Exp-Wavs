@@ -4,7 +4,8 @@ var renderer	= new THREE.WebGLRenderer({
 /* Fullscreen */
 	renderer.setSize( window.innerWidth, window.innerHeight );
 /* Append to HTML */
-	var list = document.body.getElementsByClassName("carousel-container")[0];
+	var list = document.getElementsByTagName("about")[0];
+	list.getElementsByClassName("container");
 
 	list.appendChild( renderer.domElement ); // document.body.appendChild();
 	var onRenderFcts= [];
