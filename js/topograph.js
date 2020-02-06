@@ -4,7 +4,9 @@ var renderer	= new THREE.WebGLRenderer({
 /* Fullscreen */
 	renderer.setSize( window.innerWidth, window.innerHeight );
 /* Append to HTML */
-	document.body.appendChild( renderer.domElement );
+	var list = document.body.getElementsByClassName("carousel-background")[0];
+
+	list.appendChild( renderer.domElement ); // document.body.appendChild();
 	var onRenderFcts= [];
 	var scene	= new THREE.Scene();
 	var camera	= new THREE.PerspectiveCamera(25, window.innerWidth /    window.innerHeight, 0.01, 1000);
