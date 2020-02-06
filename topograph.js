@@ -33,7 +33,7 @@ var renderer	= new THREE.WebGLRenderer({
 	THREEx.Terrain.heightMapToVertexColor(heightMap, geometry)
 /* Wireframe built-in color is white, no need to change that */
 	var material	= new THREE.MeshBasicMaterial({
-		wireframe: true
+		//wireframe: true
 	});
 	var mesh	= new THREE.Mesh( geometry, material );
 	scene.add( mesh );
@@ -48,7 +48,7 @@ var renderer	= new THREE.WebGLRenderer({
 /* Play around with the camera */
 	onRenderFcts.push(function(delta, now){
 		mesh.rotation.z += 0.2 * delta;
-		modHeightMap(heightMap)
+		mesh.scale.z = Math.cos(now)
 	})
 	onRenderFcts.push(function(){
 		renderer.render( scene, camera );
@@ -63,40 +63,3 @@ var renderer	= new THREE.WebGLRenderer({
 			onRenderFct(deltaMsec/1000, nowMsec/1000)
 		})
 	})
-
-//THREEx.Terrain.simplexHeightMap	= function(heightMap){
-function simplexHeightMap(heighMap){
-		// get heightMap dimensions
-		var width	= heightMap.length
-		var depth	= heightMap[0].length
-
-		var simplex	= new SimplexNoise()
-		for(var x = 0; x < width; x++){
-			for(var z = 0; z < depth; z++){
-				// compute the height
-				var height	= 0
-				var level	= 8 //Math.sin(tuniform.time)*10
-				height	+= (simplex.noise(x/level, z/level)/2 + 0.5) * 0.125
-				level	*= 3
-				height	+= (simplex.noise(x/level, z/level)/2 + 0.5) * 0.25
-				level	*= 2
-				height	+= (simplex.noise(x/level, z/level)/2 + 0.5) * 0.5
-				level	*= 2
-				height	+= (simplex.noise(x/level, z/level)/2 + 0.5) * 1
-				height	/= 1+0.5+0.25+0.125
-				// put the height in the heightMap
-				heightMap[x][z]	= height
-			}
-		}
-	}
-
-	function modHeightMap(heightMap){
-		var width	= heightMap.length
-		var depth	= heightMap[0].length
-
-		for(var x = 0; x < width; x++){
-			for(var z = 0; z < depth; z++){
-				heightMap[x][z] = heightMap[x][z+1]
-			}
-		}
-	}
