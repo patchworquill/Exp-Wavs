@@ -1,0 +1,17 @@
+<h1>Project Inspo</h1>
+
+- Dani Moodboard: https://www.pinterest.ca/colombia2011409/experimental-waves-moodboard/
+- Dani Inspo: https://www.thinkingbox.com/
+- Pat Inspo: https://planets.teamlab.art/tokyo/
+
+<h1>Three.js Inspo</h1>
+
+- Procedurally Generated Minimal Environment: https://codepen.io/marctannous/pen/RNGjmz
+- Realistic Water: https://codepen.io/Khangeldy/pen/pgXNMZ
+- Bloom effect: https://threejs.org/examples/?q=bloom#webgl_postprocessing_unreal_bloom_selective/
+- Light Trails: https://tympanus.net/codrops/2019/11/13/high-speed-light-trails-in-three-js/
+- Trails: https://github.com/mrdoob/three.js/blob/master/examples/webgl_trails.html
+- Web Trails: https://threejs.org/examples/?q=trail#webgl_trails
+
+<h3>Weblinks</h3>
+Instagram: https://www.instagram.com/exp.wavs/
