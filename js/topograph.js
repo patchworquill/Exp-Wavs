@@ -4,10 +4,10 @@ var renderer	= new THREE.WebGLRenderer({
 /* Fullscreen */
 	renderer.setSize( window.innerWidth, window.innerHeight );
 /* Append to HTML */
-	var list = document.getElementsByTagName("about")[0];
-	list.getElementsByClassName("container");
+	var list = document.getElementsByTagName("wavey")[0];
+	var cancan = getElementsByClassName("wavey");
 
-	list.appendChild( renderer.domElement ); // document.body.appendChild();
+	cancan.appendChild( renderer.domElement ); // document.body.appendChild();
 	var onRenderFcts= [];
 	var scene	= new THREE.Scene();
 	var camera	= new THREE.PerspectiveCamera(25, window.innerWidth /    window.innerHeight, 0.01, 1000);
