@@ -12,10 +12,14 @@
   <body>
     <div class=wrap>
     <script src="js/three.js"></script>
+    <script src="js/SVGLoader.js"></script>
+    <script src="js/SVGRenderer.js"></script>
     <script src="js/stats.min.js"></script>
     <script src="js/OrbitControls.js"></script>
-    <script src='js/threex.terrain.js'></script>
-    <script src="js/SimplexNoise.js"></script>
+
+    <!-- <script src='js/threex.terrain.js'></script>
+    <script src="js/SimplexNoise.js"></script> -->
+
     <script id="vertexShader" type="x-shader/x-vertex">
         void main() {
             gl_Position = vec4( position, 1.0 );
@@ -80,18 +84,21 @@
         var mesh;
 
         init();
+        loadSVG();
         GameLoop();
 
-        function init() {
+
+
+        function init()
+        {
             container = document.getElementById( 'container' );
 
             camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-
             scene = new THREE.Scene();
 
-            //var geometry = new THREE.PlaneBufferGeometry( 5, 20, 32 );
-            var geometry = new THREE.BoxBufferGeometry( 10, 10, 1 );
+            var geometry = new THREE.PlaneBufferGeometry( 5, 20, );
+            //var geometry = new THREE.BoxBufferGeometry( 10, 10, 1 );
 
             uniforms = {
                 u_time: { type: "f", value: 1.0 },
@@ -149,19 +156,22 @@
             }
         }
 
-        function onWindowResize( event ) {
+        function onWindowResize( event )
+        {
             renderer.setSize( window.innerWidth, window.innerHeight );
             uniforms.u_resolution.value.x = renderer.domElement.width;
             uniforms.u_resolution.value.y = renderer.domElement.height;
         }
 
         // game logic
-        function update() {
+        function update()
+        {
             // mesh.rotation.x += 0.1;
             // mesh.rotation.y += 0.1;
         }
 
-        function render() {
+        function render()
+        {
             uniforms.u_time.value += 0.001; // SPEED OF MOVEMENT
             renderer.render( scene, camera );
         }
@@ -176,6 +186,65 @@
           render( );
           //stats.end();
         };
+
+        function loadSVG()
+        {
+          // instantiate a loader
+          var loader = new THREE.SVGLoader();
+
+          // load a SVG resource
+          loader.load(
+          	// resource URL
+          	'img/logo.svg',
+          	// called when the resource is loaded
+          	function ( data ) {
+
+          		var paths = data.paths;
+          		var group = new THREE.Group();
+
+          		for ( var i = 0; i < paths.length; i ++ ) {
+
+          			var path = paths[ i ];
+
+          			var material = new THREE.MeshBasicMaterial( {
+          				color: 0xd6b513, //path.color
+          				side: THREE.DoubleSide,
+          				depthWrite: false
+          			} );
+
+          			var shapes = path.toShapes( true );
+
+          			for ( var j = 0; j < shapes.length; j ++ ) {
+
+          				var shape = shapes[ j ];
+          				var geometry = new THREE.ShapeBufferGeometry( shape );
+          				var mesh = new THREE.Mesh( geometry, material );
+          				group.add( mesh );
+
+          			}
+
+          		}
+
+          		scene.add( group );
+
+              svg_renderer = new SVGRenderer.render(scene, camera);
+              scene.add( svg_renderer );
+              svg_renderer.setSize(500,500);
+
+          	},
+          	// called when loading is in progresses
+          	function ( xhr ) {
+
+          		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+          	},
+          	// called when loading has errors
+          	function ( error ) {
+
+          		console.log( 'An error happened' );
+          	}
+          );
+        }
 
     </script>
   </div>
