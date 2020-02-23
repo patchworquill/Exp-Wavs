@@ -15,6 +15,7 @@
 - Web Trails: https://threejs.org/examples/?q=trail#webgl_trails
 - Water ripples + vertex shaders: https://blog.mozvr.com/water-ripples-with-vertex-shaders/
 - Intermediate tutorials: https://medium.com/@joshmarinacci/threejs-intermediate-skill-tutorials-b48e49e37606
+
 - Examples:
 Art of Noise: https://codepen.io/Tibixx/pen/rNaKLZW?editors=1111
 - has darkness, colors, pulsating ground floor,,
@@ -43,3 +44,32 @@ Joanie Lemercier: https://joanielemercier.com/
 Pseudo-Random Number Generator: https://www.npmjs.com/package/seed-random
 Web-Audio Scheduling: https://www.html5rocks.com/en/tutorials/audio/scheduling/
 Web-Audio Games: https://www.html5rocks.com/en/tutorials/webaudio/games/
+
+
+
+
+
+
+
+BUILD NOTES:
+
+FEEDBACK SESSION Feb 22, 2020
+* have mouse position affect intensity and brightness, and movement
+* overall slower, chiller, less distracting
+* logo overlay
+* max really likes tilt idea: logo tilt / position
+* glitch comet trails? over mouse?
+
+
+Okay so I put the <a href="img/logo.png"> into Adobe Illustrator 2019CC and discovere the color is:
+COLOR: #d6b513
+Its not a webcolor so I may need a workaround for that later. I managed to pull out the svg by
+1. rasterizing the logo to reduce the size
+2. using Edit -> color to make it grayscale, then black
+3. Edit -> image trace and expanded
+4. export the file as .svg and place within /img/ folder
+
+Now, I just pushed the latest version of the code to github, and ran the website on my phone. A few issues I'm noticing.
+Issues:
+* The first should be simple: disable scroll bar and enable touch tracking so the visual is interactive.
+* Colors are wildly different. This seems to be a huge problem, as all monitors are super different and so color calibration becomes a thing. Will read further on this later. https://discourse.threejs.org/t/whats-this-about-gammafactor/4264

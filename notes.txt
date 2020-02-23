@@ -60,4 +60,6 @@ FEEDBACK SESSION Feb 22, 2020
 * max really likes tilt idea: logo tilt / position
 * glitch comet trails? over mouse?
 
+
+Okay so I put the <a href="img/logo.png">
 COLOR: #d6b513

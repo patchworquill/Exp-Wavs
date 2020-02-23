@@ -1,4 +1,4 @@
-g<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -22,7 +22,6 @@ g<!DOCTYPE html>
         }
     </script>
     <div id="container"></div>
-    <script src="js/three.min.js"></script>
     <script id="fragmentShader" type="x-shader/x-fragment">
 
         uniform vec2 u_resolution;
@@ -69,7 +68,7 @@ g<!DOCTYPE html>
 
           float range = limit * (offset + limit * cos(u_time * speed)); // evolving colors 6.28 = "static", 0.1 = strobe
           vec3 col=spectral_palette(p.x-1.0, range, paletteSelect); //range = 48.5
-          gl_FragColor=vec4(pow(col,vec3(colorRange)),1.0); //1.0/2.2
+          gl_FragColor=vec4(pow(col,vec3(1.0/2.2)),1.0); //1.0/2.2
         }
     </script>
     <script>
@@ -85,6 +84,7 @@ g<!DOCTYPE html>
             container = document.getElementById( 'container' );
 
             camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
 
             scene = new THREE.Scene();
 
@@ -108,16 +108,15 @@ g<!DOCTYPE html>
                 uniforms.u_wheel.value += 1.0;
             }
 
-
-            //geometry.addAttribute('vertexDisplacement', new THREE.BufferAttribute(vertexDisplacement, 1));
-
-            var material = new THREE.ShaderMaterial( {
+            var mutt = new THREE.ShaderMaterial( {
                 uniforms: uniforms,
                 vertexShader: document.getElementById( 'vertexShader' ).textContent,
                 fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
                 depthTest: true,
 				        depthWrite: true
             } );
+
+            var material = new THREE.MeshBasicMaterial({color: #d6b513})
 
             mesh = new THREE.Mesh( geometry, material );
             scene.add( mesh );
@@ -128,9 +127,9 @@ g<!DOCTYPE html>
 
             onWindowResize();
 
-            var stats = new Stats();
-            stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
-            document.body.appendChild( stats.dom );
+            // var stats = new Stats();
+            // stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+            // document.body.appendChild( stats.dom );
 
             window.addEventListener( 'resize', onWindowResize, false );
 
