@@ -49,20 +49,23 @@
         {
           vec2 p = (gl_FragCoord.xy-u_resolution.xy)/max(u_resolution.x,u_resolution.y); // 2.0*
           float mouseY_amt = 0.003;
-          #pragma unroll_loop
+          float waveDensity = 0.66; // best between 0.5 and 0.8
+
+          //#pragma unroll_loop
           for( int i = 1; i < 33 ; i++ ) {
 
             p=p+vec2(
-              0.6 / float(i)*cos(float(i)*p.y + u_time +0.1*float(i) + mouseY_amt * u_mouse.y) + u_wheel , // +10.0
-              0.6 / float(i)*cos(float(i)*p.x + u_time +0.1*float(i+1) + -0.5 * mouseY_amt * u_mouse.x) //-1.4
+              waveDensity / float(i) * cos( float(i) * p.y + u_time +0.1*float(i) + -1.4 ) + u_wheel, // +10.0 // put inside cos -- + mouseY_amt * u_mouse.y
+              waveDensity / float(i) * cos( float(i) * p.x + u_time +0.1*float(i) ) //-1.4 // + mouseY_amt * u_mouse.x
+
             );
 
           }
           // PAT: settings: limit = 3.1415 / 1.0, offset = 0.1, speed = 0.1, colorrange = 0.1
           // EXP: settings: limit = 3.1415 / 1.0, offset = 0.1, speed = 0.1, colorrange = 1.54
           float limit = 3.1415 / 60.0 ;
-          float offset = 0.1 ; //1.0
-          float speed = 0.1;
+          float offset = 1.0 ; //1.0
+          float speed = 0.01 ;
           float colorRange = 742.0 / u_resolution.x ; // use color range in circle around mouse to effect
 
           float range = limit * (offset + limit * cos(u_time * speed)); // evolving colors 6.28 = "static", 0.1 = strobe
@@ -94,7 +97,7 @@
                 u_time: { type: "f", value: 1.0 },
                 u_resolution: { type: "v2", value: new THREE.Vector2() },
                 u_mouse: { type: "v2", value: new THREE.Vector2() },
-                u_wheel: {type: "f", value: 11.0 },
+                u_wheel: {type: "f", value: Math.random() * 100 }, //11.0 has the spiral
                 paletteSelect: {type: "i", value: 0},
             };
 
