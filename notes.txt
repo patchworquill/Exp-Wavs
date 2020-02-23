@@ -53,11 +53,11 @@ Web-Audio Games: https://www.html5rocks.com/en/tutorials/webaudio/games/
 
 BUILD NOTES:
 
-
-
 FEEDBACK SESSION Feb 22, 2020
 * have mouse position affect intensity and brightness, and movement
 * overall slower, chiller, less distracting
 * logo overlay
 * max really likes tilt idea: logo tilt / position
 * glitch comet trails? over mouse?
+
+COLOR: #d6b513
