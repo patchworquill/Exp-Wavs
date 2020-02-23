@@ -23,7 +23,6 @@
     </script>
     <div id="container"></div>
     <script id="fragmentShader" type="x-shader/x-fragment">
-
         uniform vec2 u_resolution;
         uniform vec2 u_mouse;
         uniform float u_wheel;
@@ -106,9 +105,10 @@
                 // else uniforms.paletteSelect.value = 0;
                 // console.log(uniforms.paletteSelect.value);
                 uniforms.u_wheel.value += 1.0;
+                console.log(uniforms.u_wheel.value)
             }
 
-            var mutt = new THREE.ShaderMaterial( {
+            var material = new THREE.ShaderMaterial( {
                 uniforms: uniforms,
                 vertexShader: document.getElementById( 'vertexShader' ).textContent,
                 fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
@@ -116,7 +116,7 @@
 				        depthWrite: true
             } );
 
-            var material = new THREE.MeshBasicMaterial({color: #d6b513})
+            //var material = new THREE.MeshBasicMaterial({color: #d6b513})
 
             mesh = new THREE.Mesh( geometry, material );
             scene.add( mesh );
