@@ -23,9 +23,6 @@ Art of Noise: https://codepen.io/Tibixx/pen/rNaKLZW?editors=1111
 - OrbitControls for box:
 - Import via modules: https://threejs.org/docs/#manual/en/introduction/Import-via-modules
 
-
-
-
 <h3>Weblinks</h3>
 Instagram: https://www.instagram.com/exp.wavs/
 
@@ -47,3 +44,20 @@ Joanie Lemercier: https://joanielemercier.com/
 Pseudo-Random Number Generator: https://www.npmjs.com/package/seed-random
 Web-Audio Scheduling: https://www.html5rocks.com/en/tutorials/audio/scheduling/
 Web-Audio Games: https://www.html5rocks.com/en/tutorials/webaudio/games/
+
+
+
+
+
+
+
+BUILD NOTES:
+
+
+
+FEEDBACK SESSION Feb 22, 2020
+* have mouse position affect intensity and brightness, and movement
+* overall slower, chiller, less distracting
+* logo overlay
+* max really likes tilt idea: logo tilt / position
+* glitch comet trails? over mouse?
